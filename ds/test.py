@@ -2,6 +2,8 @@ import torch
 from model import LHUNet
 from utils import get_dataloaders
 from metrics import dice_score, hausdorff_95
+import torch.nn as nn
+import torch.nn.functional as F
 
 # Load model
 model = LHUNet()
