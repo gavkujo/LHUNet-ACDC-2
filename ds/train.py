@@ -4,7 +4,7 @@ from model import LHUNet
 from utils import get_dataloaders
 
 # Hyperparameters
-base_dir = "data"
+base_dir = "../ACDC"
 batch_size = 8
 learning_rate = 1e-4
 num_epochs = 50
