@@ -2,6 +2,8 @@ import torch
 import torch.optim as optim
 from model import LHUNet
 from utils import get_dataloaders
+import torch.nn as nn
+import torch.nn.functional as F
 
 # Hyperparameters
 base_dir = "../ACDC"
