@@ -46,8 +46,8 @@ class ACDCDataset(Dataset):
     def __getitem__(self, idx):
         file_path = self.sample_list[idx]
         with h5py.File(file_path, 'r') as f:
-            image = f['image'][:]
-            label = f['label'][:]
+            image = np.array(f['image'][:])
+            label = np.array(f['label'][:])
 
         if self.transform:
             sample = {'image': image, 'label': label}
