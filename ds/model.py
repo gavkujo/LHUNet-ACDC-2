@@ -53,7 +53,7 @@ class LHUNet(nn.Module):
         self.enc1 = self.conv_block(in_channels, features)
         self.enc2 = self.conv_block(features, features * 2)
         self.enc3 = self.conv_block(features * 2, features * 4)
-        self.enc4 = self.conv_block(fesatures * 4, features * 8)
+        self.enc4 = self.conv_block(features * 4, features * 8)
 
         # Hybrid Attention Blocks
         self.attention1 = HybridAttentionBlock(features)
