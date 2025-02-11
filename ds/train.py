@@ -4,24 +4,19 @@ from model import LHUNet
 from utils import get_dataloaders
 
 # Hyperparameters
-data_dir = "data"
+base_dir = "data"
 batch_size = 8
 learning_rate = 1e-4
 num_epochs = 50
+output_size = (224, 224)
 
 # Load data
-train_loader, val_loader = get_dataloaders(data_dir, batch_size)
+train_loader, val_loader, _ = get_dataloaders(base_dir, batch_size, output_size)
 
 # Initialize model, optimizer, and loss function
 model = LHUNet()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-loss_fn = lambda pred, target: dice_loss(pred, target) + nn.CrossEntropyLoss()(pred, target)
-
-def dice_loss(pred, target):
-    smooth = 1e-5
-    pred = torch.softmax(pred, dim=1)
-    intersection = (pred * target).sum()
-    return 1 - (2. * intersection + smooth) / (pred.sum() + target.sum() + smooth)
+loss_fn = nn.CrossEntropyLoss()
 
 # Training loop
 for epoch in range(num_epochs):
