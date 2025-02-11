@@ -6,6 +6,8 @@ from torch.utils.data import Dataset, DataLoader
 from scipy import ndimage
 from scipy.ndimage import zoom
 import random
+import torch.nn as nn
+import torch.nn.functional as F
 
 class ACDCDataset(Dataset):
     def __init__(self, base_dir, split='train', transform=None):
